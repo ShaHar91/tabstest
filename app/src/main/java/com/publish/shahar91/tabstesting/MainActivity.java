@@ -5,14 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.publish.shahar91.tabstesting.TestFragment.BlankFragment;
 import com.publish.shahar91.tabstesting.TestFragment.BlankFragment2;
+import com.publish.shahar91.tabstesting.TestFragment.BlankFragment3;
 
-public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener, BlankFragment2.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener, BlankFragment2.OnFragmentInteractionListener, BlankFragment3.OnFragmentInteractionListener{
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -20,24 +21,9 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment = null;
-            Class fragmentClass;
+           displayView(item.getItemId());
 
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-
-                    return true;
-                case R.id.navigation_dashboard:
-                    fragmentClass = BlankFragment2.class;
-
-
-
-                    break;
-                case R.id.navigation_notifications:
-                    return true;
-            }
-
-            return false;
+            return true;
         }
     };
 
@@ -46,16 +32,42 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.fragment_container, BlankFragment.newInstance("hello", "whatever"), "Blank")
-                    .commit();
-        }
+        displayView(R.id.navigation_home);
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    public void displayView(int viewId){
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
+
+        switch (viewId){
+            case R.id.navigation_home:
+                fragment= new BlankFragment();
+                title= "hello";
+                break;
+            case R.id.navigation_dashboard:
+                fragment = new BlankFragment2();
+                title= "Second fragment";
+                break;
+            case R.id.navigation_notifications:
+                fragment = new BlankFragment3();
+                title="Third fragment";
+                break;
+        }
+
+        if (fragment != null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
+
+        // set the toolbar title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
     }
 
     @Override
