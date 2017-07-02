@@ -4,6 +4,46 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="normal">Normal</string>
+    <string name="fire">Fire</string>
+    <string name="water">Water</string>
+    <string name="electric">Electric</string>
+    <string name="grass">Grass</string>
+    <string name="ice">Ice</string>
+    <string name="fight">Fight</string>
+    <string name="poison">Poison</string>
+    <string name="ground">Ground</string>
+    <string name="flying">Flying</string>
+    <string name="psychic">Psychic</string>
+    <string name="bug">Bug</string>
+    <string name="rock">Rock</string>
+    <string name="ghost">Ghost</string>
+    <string name="dragon">Dragon</string>
+    <string name="dark">Dark</string>
+    <string name="steel">Steel</string>
+    <string name="fairy">Fairy</string>
+    <string name="header_typeChart">Choose the defending Pokémon\'s type:</string>
+
+
+    <string-array name="types">
+        <item></item>
+        <item>Normal</item>
+        <item>Fire</item>
+        <item>Water</item>
+        <item>Electric</item>
+        <item>Grass</item>
+        <item>Ice</item>
+        <item>Fight</item>
+        <item>Poison</item>
+        <item>Ground</item>
+        <item>Flying</item>
+        <item>Psychic</item>
+        <item>Bug</item>
+        <item>Rock</item>
+        <item>Ghost</item>
+        <item>Dragon</item>
+        <item>Dark</item>
+        <item>Steel</item>
+        <item>Fairy</item>
+    </string-array>
 </resources>
